@@ -70,7 +70,7 @@ tasks:
           curl -sL https://rakudo.org/dl/rakudo/rakudo-moar-$version-01-linux-x86_64-gcc.tar.gz \
           -o rakudo-moar-$version-01-linux-x86_64-gcc.tar.gz
           tar -xzf rakudo-moar-$version-01-linux-x86_64-gcc.tar.gz          
-          eval "$(rakudo-moar-$version-01-linux-x86_64-gcc/scripts/set-env.sh)"
+          eval "$(rakudo-moar-$version-01-linux-x86_64-gcc/scripts/set-env.sh --quiet)"
           which raku
           which zef
           raku --version
@@ -88,5 +88,5 @@ tasks:
     name: install-deps
     language: Bash
     code: |
-      sudo apt-get install -y time graphviz
+      sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 time graphviz
       zef install --/test Text::Table::Simple
